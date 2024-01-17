@@ -80,6 +80,10 @@ Want to expand into integrating AI and LLM's into clinical practice to increase 
 
 -   "Hit by a bus" workflow
 
+Link to slides: <http://tinyurl.com/2c75pys6>
+
+![](images/2c75pys6-400.png){fig-align="center" width="459"}
+
 ```{r, results = 'hide', message = F, warning = F}
 options(scipen=999)
 library(car) #recode conflict with tidyverse

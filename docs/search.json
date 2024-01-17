@@ -39,7 +39,7 @@
     "href": "AIWorkshop.html",
     "title": "AWARE AI Workshop",
     "section": "",
-    "text": "This page houses information about a workshop on 1/17/2024 as a part of AWARE AI through the Rochester Institute of Technology.\n\n\n\nSlides for Presentation"
+    "text": "This page houses information about a workshop on 1/17/2024 as a part of AWARE AI through the Rochester Institute of Technology.\nAdministered by Dustin Haraden, PhD (email)\n\n\n\nSlides for Presentation"
   },
   {
     "objectID": "AIWorkshop.html#slides",
@@ -60,7 +60,7 @@
     "href": "slides/aware_ai/AWARE_AIslides.html#overview",
     "title": "Data Analysis and Modeling in R",
     "section": "Overview",
-    "text": "Overview\n\nModel Based Inquiries\n“Hit by a bus” workflow\n\n\noptions(scipen=999)\nlibrary(car) #recode conflict with tidyverse\nlibrary(tidyverse)\nlibrary(rio)\nlibrary(broom)\nlibrary(psych)\nlibrary(easystats)\nlibrary(sjPlot)\nlibrary(janitor)"
+    "text": "Overview\n\nModel Based Inquiries\n“Hit by a bus” workflow\n\nLink to slides: http://tinyurl.com/2c75pys6\n\n\noptions(scipen=999)\nlibrary(car) #recode conflict with tidyverse\nlibrary(tidyverse)\nlibrary(rio)\nlibrary(broom)\nlibrary(psych)\nlibrary(easystats)\nlibrary(sjPlot)\nlibrary(janitor)"
   },
   {
     "objectID": "slides/aware_ai/AWARE_AIslides.html#endogeneity",
