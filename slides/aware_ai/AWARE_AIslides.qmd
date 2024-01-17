@@ -1,0 +1,347 @@
+---
+title: "Intro to RMarkdown"
+subtitle: "PSYC 640 - Fall 2023"
+author: "Dustin Haraden, PhD"
+format: 
+  revealjs:
+    multiplex: true
+    scrollable: true
+    slide-number: true
+    incremental: false
+    touch: true
+    code-overflow: wrap
+    highlightLines: true
+    theme: dark
+execute: 
+  echo: true
+editor: visual
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include = F}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+```
+
+```{r, echo = F, results='hide',warning=FALSE,message=FALSE}
+options(scipen = 999)
+
+library(knitr)
+# function to display only part of the output
+hook_output <- knit_hooks$get("output")
+knit_hooks$set(output = function(x, options) {
+  lines <- options$output.lines
+  if (is.null(lines)) {
+    return(hook_output(x, options))  # pass to default hook
+  }
+  x <- unlist(strsplit(x, "\n"))
+  more <- "..."
+  if (length(lines)==1) {        # first n lines
+    if (length(x) > lines) {
+      # truncate the output, but add ....
+      x <- c(head(x, lines), more)
+    }
+  } else {
+    x <- c(more, x[lines], more)
+  }
+  # paste these lines together
+  x <- paste(c(x, ""), collapse = "\n")
+  hook_output(x, options)
+})
+
+knitr::opts_chunk$set(message = FALSE, 
+                      warning = FALSE) # suppress messages
+```
+
+## Last Time
+
+::: nonincremental
+-   Multiple Regression
+:::
+
+------------------------------------------------------------------------
+
+## Today...
+
+-   Review the regression stuff
+
+-   RMarkdown!
+
+    -   Even though we've been doing it this whole time
+
+```{r, results = 'hide', message = F, warning = F}
+options(scipen=999)
+library(car) #recode conflict with tidyverse
+library(tidyverse)
+library(rio)
+library(broom)
+library(psych)
+library(easystats)
+library(sjPlot)
+library(janitor)
+```
+
+------------------------------------------------------------------------
+
+### Data for Today
+
+```{r}
+
+student_perf <- read_csv("https://raw.githubusercontent.com/dharaden/psyc640/main/data/Multiple_reg/Student_Performance.csv") %>% 
+  clean_names()
+```
+
+------------------------------------------------------------------------
+
+# Multiple Regression
+
+## Regression Equation
+
+Going from this:
+
+$$
+\hat{Y} = b_0 + b_1X1
+$$
+
+. . .
+
+To this
+
+$$
+\hat{Y} = b_0 + b_1X_1 + b_2X_2 + ... + b_kX_k
+$$
+
+. . .
+
+Regression coefficient values are now "partial" - Represents the contribution to all of outcome ($\hat{Y}$) from *unique* aspects of each $X$
+
+------------------------------------------------------------------------
+
+## Interpreting Coefficients
+
+$$
+\hat{Y} = b_0 + b_1X_1 + b_2X_2 + ... + b_kX_k
+$$
+
+-   Focus on a specific predictor (e.g., $X_1$)
+
+-   For every 1 unit change in $X_1$, there is a $b_1$ unit change in $Y$, [**holding all other predictors constant**]{style="color:red"}
+
+**Note**: Properties of OLS still hold true
+
+-   The sum of residuals will be 0
+
+-   Each predictor ($X$) will be uncorrelated with the residuals
+
+------------------------------------------------------------------------
+
+### Example - Single Predictor
+
+```{r}
+fit1 <- lm(performance_index ~ hours_studied, 
+           data = student_perf)
+```
+
+------------------------------------------------------------------------
+
+### Example - Coefficient interpretation
+
+[sjPlot](https://strengejacke.github.io/sjPlot/articles/tab_model_estimates.html)
+
+```{r}
+sjPlot::tab_model(fit1)
+```
+
+------------------------------------------------------------------------
+
+### Example - Visualizing
+
+How do we visualize this?
+
+------------------------------------------------------------------------
+
+### Example - Visualizing
+
+How do we visualize this?
+
+```{r}
+car::avPlots(fit1)
+```
+
+------------------------------------------------------------------------
+
+## Holding Constant??? Wut
+
+```{r, output.lines = 10:15}
+summary(fit1)
+```
+
+-   The average amount of sleep decreases by 0.08 hours for every 1 year older the youth his **holding the number of hours playing video games and the number of hours on social media constant.**
+
+-   The average amount of sleep decreases by 0.004 hours for every 1 hour of social media use **holding age and hours of video game usage constant.**
+
+What does this mean?? Also can be called "controlling for" or "taking into account" the other variables
+
+Language comes from experimental research in which they can keep one condition unchanged while manipulating the other
+
+------------------------------------------------------------------------
+
+## Holding Constant - "Controlling for"
+
+![](/images/control.gif){fig-align="center"}
+
+Taken from [\@nickchk](https://twitter.com/nickchk)
+
+------------------------------------------------------------------------
+
+## Creating the Model
+
+There can be many different ways in which we create and compare models with multiple predictors
+
+::: incremental
+-   **Simultaneous**: Enter all variables in the model at once
+    -   Usually the most conservative and defensible approach (unless there is theory to support a hierarchical approach)
+-   **Hierarchically**: Building a sequence of models where a single variable is included/excluded at each step
+    -   This is **hierarchical/stepwise regression.** Different from HLM (Hierarchical Linear Modeling)
+:::
+
+------------------------------------------------------------------------
+
+## Model Selection ([LSR 15.10](https://learningstatisticswithr.com/book/regression.html#modelselreg))
+
+How can we tell if one model is "better" than the other (it explains more variance in outcome)?
+
+-   Each predictor (or set of predictors) is investigated as to what it adds to the model when it is entered
+-   The order of the variables depends on an *a priori* hypothesis
+
+The concept is to ask how much variance is unexplained by our model. The leftovers can be compared to an alternate model to see if the new variable adds anything or if we should focus on **parsimony**
+
+------------------------------------------------------------------------
+
+### Model Comparison Example
+
+```{r, , output.lines = 1:7}
+#m.2 <- lm(Sleep_Hours_Non_Schoolnight ~ Ageyears + #video_game_hrs, 
+#           data = school)
+#m.3 <- lm(Sleep_Hours_Non_Schoolnight ~ Ageyears + #video_game_hrs + social_med_hrs, 
+#           data = school)
+#anova(m.2, m.3)
+```
+
+```{r}
+#r2(m.2)
+#r2(m.3)
+```
+
+------------------------------------------------------------------------
+
+### Model Comparison - sjPlot
+
+```{r}
+#tab_model(m.2, m.3)
+```
+
+# Model Diagnostics
+
+------------------------------------------------------------------------
+
+## Checking the model ([LSR 15.9](https://learningstatisticswithr.com/book/regression.html#regressiondiagnostics))
+
+Whenever we are looking at the regression model diagnostics, we are often considering the residual values. The types of residuals we can look at are:
+
+::: incremental
+-   Ordinary Residuals - Raw
+
+-   Standardized Residuals
+
+-   Studentized Residuals - Takes into account what the SD *would* have been with the removal of the $i$th observation
+:::
+
+------------------------------------------------------------------------
+
+### Model Checks - Outlier
+
+We tend to look for various things that may impact our results through the lens of residuals
+
+**1) Outliers** - variables with high Studentized Residuals
+
+![](/images/outlier.PNG){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Model Checks - Leverage
+
+We tend to look for various things that may impact our results through the lens of residuals
+
+**2) Leverage** - variable is different in all ways from others (not just residuals)
+
+![](/images/leverage.PNG){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Model Checks - Influence
+
+We tend to look for various things that may impact our results through the lens of residuals
+
+**3) Influence** - outlier with high leverage (*Cook's Distance*)
+
+![](/images/influence.PNG){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Model Checks - Plots
+
+```{r}
+#Cook's Distance
+#plot(m.3, which = 4)
+```
+
+------------------------------------------------------------------------
+
+### Model Checks - Plots
+
+```{r}
+#Leverage
+#plot(m.3, which = 5)
+```
+
+------------------------------------------------------------------------
+
+## Checking Collinearity
+
+We need to check to see if our predictor variables are too highly correlated with each other
+
+To do so we use ***variance inflation factors (VIF)***
+
+-   There will be a VIF that is associated with each predictor in the model
+-   Interpreting VIF ([link](https://www.statisticshowto.com/variance-inflation-factor/)) - Starts at 1 and goes up
+    -   1 = Not Correlated
+    -   1-5 = Moderately Correlated
+    -   5+ = Highly Correlated
+
+```{r}
+#car::vif(m.3)
+```
+
+------------------------------------------------------------------------
+
+## `easystats` making stats easy
+
+Can check the model with a simple function
+
+```{r}
+#check_model(m.3)
+```
+
+# Rounding up Multiple Regression
+
+It is a powerful and complex tool
+
+# Next time...
+
+-   More R fun
+-   Group work
+
+# Stop...Group Time
+
+![](/images/mchammer.gif){fig-align="center"}
