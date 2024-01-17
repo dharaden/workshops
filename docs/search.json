@@ -4,14 +4,14 @@
     "href": "slides/aware_ai/ExampleMarkdown.html",
     "title": "Example Markdown",
     "section": "",
-    "text": "library(dplyr)\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\nlibrary(easystats)\n\n# Attaching packages: easystats 0.7.0 (red = needs update)\n✔ bayestestR  0.13.1   ✔ correlation 0.8.4 \n✖ datawizard  0.9.0    ✔ effectsize  0.8.6 \n✖ insight     0.19.6   ✔ modelbased  0.8.6 \n✔ performance 0.10.8   ✔ parameters  0.21.3\n✖ report      0.5.7    ✔ see         0.8.1 \n\nRestart the R-Session and update packages with `easystats::easystats_update()`.\n\nlibrary(sjPlot)\n\nInstall package \"strengejacke\" from GitHub (`devtools::install_github(\"strengejacke/strengejacke\")`) to load all sj-packages at once!\n\nlibrary(here)\n\nhere() starts at C:/Users/Dustin_Haraden/Documents/GitHub/workshops\n\nlibrary(janitor)\n\n\nAttaching package: 'janitor'\n\n\nThe following object is masked from 'package:insight':\n\n    clean_names\n\n\nThe following objects are masked from 'package:datawizard':\n\n    remove_empty, remove_empty_rows\n\n\nThe following objects are masked from 'package:stats':\n\n    chisq.test, fisher.test\n\nschool_data &lt;- read.csv(here(\"slides\", \n                             \"aware_ai\", \n                             \"data\", \n                             \"NM-NY_CAS.csv\")) %&gt;% \n  clean_names()\n\nNow that we have the data loaded in, we can begin to examine things in more detail"
+    "text": "library(dplyr)\n\nWarning: package 'dplyr' was built under R version 4.3.2\n\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\nlibrary(easystats)\n\nWarning: package 'easystats' was built under R version 4.3.2\n\n\n# Attaching packages: easystats 0.7.0\n✔ bayestestR  0.13.1   ✔ correlation 0.8.4 \n✔ datawizard  0.9.1    ✔ effectsize  0.8.6 \n✔ insight     0.19.7   ✔ modelbased  0.8.6 \n✔ performance 0.10.8   ✔ parameters  0.21.3\n✔ report      0.5.8    ✔ see         0.8.1 \n\nlibrary(sjPlot)\n\nWarning: package 'sjPlot' was built under R version 4.3.2\n\nlibrary(here)\n\nWarning: package 'here' was built under R version 4.3.2\n\n\nhere() starts at C:/Users/dxhgsh/Documents/GitHub/workshops\n\nlibrary(janitor)\n\nWarning: package 'janitor' was built under R version 4.3.2\n\n\n\nAttaching package: 'janitor'\n\n\nThe following object is masked from 'package:insight':\n\n    clean_names\n\n\nThe following objects are masked from 'package:datawizard':\n\n    remove_empty, remove_empty_rows\n\n\nThe following objects are masked from 'package:stats':\n\n    chisq.test, fisher.test\n\nschool_data &lt;- read.csv(here(\"slides\", \n                             \"aware_ai\", \n                             \"data\", \n                             \"NM-NY_CAS.csv\")) %&gt;% \n  clean_names()\n\nNow that we have the data loaded in, we can begin to examine things in more detail"
   },
   {
     "objectID": "slides/aware_ai/ExampleMarkdown.html#be-clear",
     "href": "slides/aware_ai/ExampleMarkdown.html#be-clear",
     "title": "Example Markdown",
     "section": "",
-    "text": "library(dplyr)\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\nlibrary(easystats)\n\n# Attaching packages: easystats 0.7.0 (red = needs update)\n✔ bayestestR  0.13.1   ✔ correlation 0.8.4 \n✖ datawizard  0.9.0    ✔ effectsize  0.8.6 \n✖ insight     0.19.6   ✔ modelbased  0.8.6 \n✔ performance 0.10.8   ✔ parameters  0.21.3\n✖ report      0.5.7    ✔ see         0.8.1 \n\nRestart the R-Session and update packages with `easystats::easystats_update()`.\n\nlibrary(sjPlot)\n\nInstall package \"strengejacke\" from GitHub (`devtools::install_github(\"strengejacke/strengejacke\")`) to load all sj-packages at once!\n\nlibrary(here)\n\nhere() starts at C:/Users/Dustin_Haraden/Documents/GitHub/workshops\n\nlibrary(janitor)\n\n\nAttaching package: 'janitor'\n\n\nThe following object is masked from 'package:insight':\n\n    clean_names\n\n\nThe following objects are masked from 'package:datawizard':\n\n    remove_empty, remove_empty_rows\n\n\nThe following objects are masked from 'package:stats':\n\n    chisq.test, fisher.test\n\nschool_data &lt;- read.csv(here(\"slides\", \n                             \"aware_ai\", \n                             \"data\", \n                             \"NM-NY_CAS.csv\")) %&gt;% \n  clean_names()\n\nNow that we have the data loaded in, we can begin to examine things in more detail"
+    "text": "library(dplyr)\n\nWarning: package 'dplyr' was built under R version 4.3.2\n\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\nlibrary(easystats)\n\nWarning: package 'easystats' was built under R version 4.3.2\n\n\n# Attaching packages: easystats 0.7.0\n✔ bayestestR  0.13.1   ✔ correlation 0.8.4 \n✔ datawizard  0.9.1    ✔ effectsize  0.8.6 \n✔ insight     0.19.7   ✔ modelbased  0.8.6 \n✔ performance 0.10.8   ✔ parameters  0.21.3\n✔ report      0.5.8    ✔ see         0.8.1 \n\nlibrary(sjPlot)\n\nWarning: package 'sjPlot' was built under R version 4.3.2\n\nlibrary(here)\n\nWarning: package 'here' was built under R version 4.3.2\n\n\nhere() starts at C:/Users/dxhgsh/Documents/GitHub/workshops\n\nlibrary(janitor)\n\nWarning: package 'janitor' was built under R version 4.3.2\n\n\n\nAttaching package: 'janitor'\n\n\nThe following object is masked from 'package:insight':\n\n    clean_names\n\n\nThe following objects are masked from 'package:datawizard':\n\n    remove_empty, remove_empty_rows\n\n\nThe following objects are masked from 'package:stats':\n\n    chisq.test, fisher.test\n\nschool_data &lt;- read.csv(here(\"slides\", \n                             \"aware_ai\", \n                             \"data\", \n                             \"NM-NY_CAS.csv\")) %&gt;% \n  clean_names()\n\nNow that we have the data loaded in, we can begin to examine things in more detail"
   },
   {
     "objectID": "slides/aware_ai/ExampleMarkdown.html#correlation",
@@ -39,7 +39,7 @@
     "href": "AIWorkshop.html",
     "title": "AWARE AI Workshop",
     "section": "",
-    "text": "This page houses information about a workshop on 1/17/2024 as a part of AWARE AI through the Rochester Institute of Technology.\nAdministered by Dustin Haraden, PhD (email)\n\n\n\nSlides for Presentation"
+    "text": "This page houses information about a workshop on 1/17/2024 as a part of AWARE AI through the Rochester Institute of Technology.\nAdministered by Dustin Haraden, PhD (email)\n\n\n\nSlides for Presentation\n\n\n\n\n\nExample RMarkdown"
   },
   {
     "objectID": "AIWorkshop.html#slides",
@@ -60,7 +60,7 @@
     "href": "slides/aware_ai/AWARE_AIslides.html#overview",
     "title": "Data Analysis and Modeling in R",
     "section": "Overview",
-    "text": "Overview\n\nModel Based Inquiries\n“Hit by a bus” workflow\n\nLink to slides: http://tinyurl.com/2c75pys6\n\n\noptions(scipen=999)\nlibrary(car) #recode conflict with tidyverse\nlibrary(tidyverse)\nlibrary(rio)\nlibrary(broom)\nlibrary(psych)\nlibrary(easystats)\nlibrary(sjPlot)\nlibrary(janitor)"
+    "text": "Overview\n\nModel Based Inquiries\n“Hit by a bus” workflow\nQuestions & Demo (time permitting)\n\nLink to slides: http://tinyurl.com/2c75pys6"
   },
   {
     "objectID": "slides/aware_ai/AWARE_AIslides.html#endogeneity",
@@ -131,5 +131,12 @@
     "title": "Data Analysis and Modeling in R",
     "section": "Some Useful Resources for RMarkdown",
     "text": "Some Useful Resources for RMarkdown\nR Markdown: The Definitive Guide\nR Markdown Cheatsheet\nR Markdown Cookbook\nCustom Formats for R Markdown"
+  },
+  {
+    "objectID": "AIWorkshop.html#documents",
+    "href": "AIWorkshop.html#documents",
+    "title": "AWARE AI Workshop",
+    "section": "",
+    "text": "Example RMarkdown"
   }
 ]

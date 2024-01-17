@@ -6,8 +6,12 @@ title: "AWARE AI Workshop"
 
 This page houses information about a workshop on 1/17/2024 as a part of AWARE AI through the Rochester Institute of Technology.
 
-Administered by Dustin Haraden, PhD ([email](mailto: dxhgsh@rit.edu))
+Administered by Dustin Haraden, PhD ([email](mailto:%20dxhgsh@rit.edu))
 
 ## Slides
 
 -   [Slides for Presentation](slides/aware_ai/AWARE_AIslides-speaker.html){target="_blank"}
+
+## Documents
+
+-   [Example RMarkdown](https://github.com/dharaden/workshops/blob/main/slides/aware_ai/ExampleMarkdown.Rmd)

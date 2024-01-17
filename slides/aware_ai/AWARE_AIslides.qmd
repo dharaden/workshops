@@ -80,11 +80,11 @@ Want to expand into integrating AI and LLM's into clinical practice to increase 
 
 -   "Hit by a bus" workflow
 
+-   Questions & Demo (time permitting)
+
 Link to slides: <http://tinyurl.com/2c75pys6>
 
-![](images/2c75pys6-400.png){fig-align="center" width="459"}
-
-```{r, results = 'hide', message = F, warning = F}
+```{r, echo = F, results = 'hide', message = F, warning = F}
 options(scipen=999)
 library(car) #recode conflict with tidyverse
 library(tidyverse)
@@ -374,4 +374,4 @@ Focus on establishing a reproducible workflow
 
 Reach out with any other questions or if you just want to chat
 
-Dustin Haraden [dxhgsh\@rit.edu](mailto: dxhgsh@rit.edu)
+Dustin Haraden [dxhgsh\@rit.edu](mailto:%20dxhgsh@rit.edu)

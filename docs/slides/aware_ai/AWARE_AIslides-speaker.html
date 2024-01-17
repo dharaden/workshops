@@ -425,20 +425,9 @@ Dustin Haraden, PhD
 <ul>
 <li><p>Model Based Inquiries</p></li>
 <li><p>“Hit by a bus” workflow</p></li>
+<li><p>Questions &amp; Demo (time permitting)</p></li>
 </ul>
 <p>Link to slides: <a href="http://tinyurl.com/2c75pys6" class="uri">http://tinyurl.com/2c75pys6</a></p>
-
-<img data-src="images/2c75pys6-400.png" width="459" class="r-stretch quarto-figure-center"><div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(car) <span class="co">#recode conflict with tidyverse</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">library</span>(rio)</span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="fu">library</span>(broom)</span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="fu">library</span>(psych)</span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="fu">library</span>(easystats)</span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="fu">library</span>(sjPlot)</span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="fu">library</span>(janitor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
 <section id="model-based-inquiry" class="title-slide slide level1 center">
 <h1>Model Based Inquiry</h1>
@@ -618,17 +607,17 @@ Dustin Haraden, PhD
 <section id="example---regression" class="slide level2">
 <h2>Example - Regression</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>student_perf <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/dharaden/psyc640/main/data/Multiple_reg/Student_Performance.csv"</span>) <span class="sc">%&gt;%</span>    </span>
-<span id="cb2-2"><a href="#cb2-2"></a>  <span class="fu">clean_names</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>student_perf <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/dharaden/psyc640/main/data/Multiple_reg/Student_Performance.csv"</span>) <span class="sc">%&gt;%</span>    </span>
+<span id="cb1-2"><a href="#cb1-2"></a>  <span class="fu">clean_names</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section class="slide level2">
 
 <h3 id="regression--single-predictor">Regression- Single Predictor</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(performance_index <span class="sc">~</span> previous_scores, </span>
-<span id="cb3-2"><a href="#cb3-2"></a>           <span class="at">data =</span> student_perf)</span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="fu">summary</span>(fit1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(performance_index <span class="sc">~</span> previous_scores, </span>
+<span id="cb2-2"><a href="#cb2-2"></a>           <span class="at">data =</span> student_perf)</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="fu">summary</span>(fit1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -656,7 +645,7 @@ F-statistic:  1066 on 1 and 205 DF,  p-value: &lt; 0.00000000000000022</code></p
 <h3 id="example---coefficient-interpretation">Example - Coefficient interpretation</h3>
 <p><a href="https://strengejacke.github.io/sjPlot/articles/tab_model_estimates.html">sjPlot</a></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>sjPlot<span class="sc">::</span><span class="fu">tab_model</span>(fit1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>sjPlot<span class="sc">::</span><span class="fu">tab_model</span>(fit1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table data-quarto-postprocess="true" style="border-collapse:collapse; border:none;">
 <tbody>
@@ -701,13 +690,13 @@ F-statistic:  1066 on 1 and 205 DF,  p-value: &lt; 0.00000000000000022</code></p
 
 <h3 id="model-comparison-example">Model Comparison Example</h3>
 <div class="cell" data-output.lines="[1,2,3,4,5,6,7]">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>m<span class="fl">.2</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(performance_index <span class="sc">~</span> previous_scores <span class="sc">+</span> hours_studied, </span>
-<span id="cb6-2"><a href="#cb6-2"></a>           <span class="at">data =</span> student_perf)</span>
-<span id="cb6-3"><a href="#cb6-3"></a></span>
-<span id="cb6-4"><a href="#cb6-4"></a>m<span class="fl">.3</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(performance_index <span class="sc">~</span> previous_scores <span class="sc">+</span> hours_studied <span class="sc">+</span> sleep_hours, </span>
-<span id="cb6-5"><a href="#cb6-5"></a>           <span class="at">data =</span> student_perf)</span>
-<span id="cb6-6"><a href="#cb6-6"></a></span>
-<span id="cb6-7"><a href="#cb6-7"></a><span class="fu">tab_model</span>(m<span class="fl">.2</span>, m<span class="fl">.3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>m<span class="fl">.2</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(performance_index <span class="sc">~</span> previous_scores <span class="sc">+</span> hours_studied, </span>
+<span id="cb5-2"><a href="#cb5-2"></a>           <span class="at">data =</span> student_perf)</span>
+<span id="cb5-3"><a href="#cb5-3"></a></span>
+<span id="cb5-4"><a href="#cb5-4"></a>m<span class="fl">.3</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(performance_index <span class="sc">~</span> previous_scores <span class="sc">+</span> hours_studied <span class="sc">+</span> sleep_hours, </span>
+<span id="cb5-5"><a href="#cb5-5"></a>           <span class="at">data =</span> student_perf)</span>
+<span id="cb5-6"><a href="#cb5-6"></a></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="fu">tab_model</span>(m<span class="fl">.2</span>, m<span class="fl">.3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table data-quarto-postprocess="true" style="border-collapse:collapse; border:none;">
 <tbody>
@@ -783,7 +772,7 @@ F-statistic:  1066 on 1 and 205 DF,  p-value: &lt; 0.00000000000000022</code></p
 <h3 id="easystats-making-stats-easy"><code>easystats</code> making stats easy</h3>
 <p>Can check the model with a simple function</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">check_model</span>(m<span class="fl">.3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">check_model</span>(m<span class="fl">.3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="AWARE_AIslides_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
