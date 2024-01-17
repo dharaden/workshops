@@ -4,5 +4,11 @@
   },
   "index.qmd": {
     "index.html": "2ed7bc27"
+  },
+  "slides/aware_ai/AWARE_AIslides.qmd": {
+    "AWARE_AIslides.html": "5da48f14"
+  },
+  "AIWorkshop.qmd": {
+    "AIWorkshop.html": "25012e81"
   }
 }

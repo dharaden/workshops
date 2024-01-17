@@ -1,10 +1,94 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Workshops & Classes",
+    "objectID": "slides/aware_ai/AWARE_AIslides.html#about-me",
+    "href": "slides/aware_ai/AWARE_AIslides.html#about-me",
+    "title": "Data Analysis and Modeling in R",
+    "section": "About Me",
+    "text": "About Me\n\nDustin Haraden, PhD\nClinical/Community Psychology\nResearch Focus: Developmental Psychopathology\n\n\nExamining Risk factors for depression and anxiety in children and adolescents\nEmphasis on circadian rhythms and sleep processes as well as pubertal development\nInvestigating methodology as it impacts conclusions that can be made\nQuantitatively Oriented\n\n\nWant to expand into integrating AI and LLM’s into clinical practice to increase efficacy of treatment and adherence to evidence based practices (e.g., clear case conceptualization and treatment planning)"
+  },
+  {
+    "objectID": "slides/aware_ai/AWARE_AIslides.html#overview",
+    "href": "slides/aware_ai/AWARE_AIslides.html#overview",
+    "title": "Data Analysis and Modeling in R",
+    "section": "Overview",
+    "text": "Overview\n\nModel Based Inquiries\n“Hit by a bus” workflow\n\n\noptions(scipen=999)\nlibrary(car) #recode conflict with tidyverse\nlibrary(tidyverse)\nlibrary(rio)\nlibrary(broom)\nlibrary(psych)\nlibrary(easystats)\nlibrary(sjPlot)\nlibrary(janitor)"
+  },
+  {
+    "objectID": "slides/aware_ai/AWARE_AIslides.html#regression-equation",
+    "href": "slides/aware_ai/AWARE_AIslides.html#regression-equation",
+    "title": "Data Analysis and Modeling in R",
+    "section": "Regression Equation",
+    "text": "Regression Equation\nGoing from this:\n\\[\n\\hat{Y} = b_0 + b_1X1\n\\]\n\nTo this\n\\[\n\\hat{Y} = b_0 + b_1X_1 + b_2X_2 + ... + b_kX_k\n\\]\n\n\nRegression coefficient values are now “partial” - Represents the contribution to all of outcome (\\(\\hat{Y}\\)) from unique aspects of each \\(X\\)"
+  },
+  {
+    "objectID": "slides/aware_ai/AWARE_AIslides.html#interpreting-coefficients",
+    "href": "slides/aware_ai/AWARE_AIslides.html#interpreting-coefficients",
+    "title": "Data Analysis and Modeling in R",
+    "section": "Interpreting Coefficients",
+    "text": "Interpreting Coefficients\n\\[\n\\hat{Y} = b_0 + b_1X_1 + b_2X_2 + ... + b_kX_k\n\\]\n\nFocus on a specific predictor (e.g., \\(X_1\\))\nFor every 1 unit change in \\(X_1\\), there is a \\(b_1\\) unit change in \\(Y\\), holding all other predictors constant\n\nNote: Properties of OLS still hold true\n\nThe sum of residuals will be 0\nEach predictor (\\(X\\)) will be uncorrelated with the residuals"
+  },
+  {
+    "objectID": "slides/aware_ai/AWARE_AIslides.html#holding-constant-wut",
+    "href": "slides/aware_ai/AWARE_AIslides.html#holding-constant-wut",
+    "title": "Data Analysis and Modeling in R",
+    "section": "Holding Constant??? Wut",
+    "text": "Holding Constant??? Wut\n\nsummary(fit1)\n\n...\n              Estimate Std. Error t value             Pr(&gt;|t|)    \n(Intercept)     39.646      2.659  14.912 &lt; 0.0000000000000002 ***\nhours_studied    3.128      0.464   6.741       0.000000000157 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n...\n\n\n\nThe average amount of sleep decreases by 0.08 hours for every 1 year older the youth his holding the number of hours playing video games and the number of hours on social media constant.\nThe average amount of sleep decreases by 0.004 hours for every 1 hour of social media use holding age and hours of video game usage constant.\n\nWhat does this mean?? Also can be called “controlling for” or “taking into account” the other variables\nLanguage comes from experimental research in which they can keep one condition unchanged while manipulating the other"
+  },
+  {
+    "objectID": "slides/aware_ai/AWARE_AIslides.html#holding-constant---controlling-for",
+    "href": "slides/aware_ai/AWARE_AIslides.html#holding-constant---controlling-for",
+    "title": "Data Analysis and Modeling in R",
+    "section": "Holding Constant - “Controlling for”",
+    "text": "Holding Constant - “Controlling for”\n\nTaken from @nickchk"
+  },
+  {
+    "objectID": "slides/aware_ai/AWARE_AIslides.html#creating-the-model",
+    "href": "slides/aware_ai/AWARE_AIslides.html#creating-the-model",
+    "title": "Data Analysis and Modeling in R",
+    "section": "Creating the Model",
+    "text": "Creating the Model\nThere can be many different ways in which we create and compare models with multiple predictors\n\n\nSimultaneous: Enter all variables in the model at once\n\nUsually the most conservative and defensible approach (unless there is theory to support a hierarchical approach)\n\nHierarchically: Building a sequence of models where a single variable is included/excluded at each step\n\nThis is hierarchical/stepwise regression. Different from HLM (Hierarchical Linear Modeling)"
+  },
+  {
+    "objectID": "slides/aware_ai/AWARE_AIslides.html#model-selection-lsr-15.10",
+    "href": "slides/aware_ai/AWARE_AIslides.html#model-selection-lsr-15.10",
+    "title": "Data Analysis and Modeling in R",
+    "section": "Model Selection (LSR 15.10)",
+    "text": "Model Selection (LSR 15.10)\nHow can we tell if one model is “better” than the other (it explains more variance in outcome)?\n\nEach predictor (or set of predictors) is investigated as to what it adds to the model when it is entered\nThe order of the variables depends on an a priori hypothesis\n\nThe concept is to ask how much variance is unexplained by our model. The leftovers can be compared to an alternate model to see if the new variable adds anything or if we should focus on parsimony"
+  },
+  {
+    "objectID": "slides/aware_ai/AWARE_AIslides.html#checking-the-model-lsr-15.9",
+    "href": "slides/aware_ai/AWARE_AIslides.html#checking-the-model-lsr-15.9",
+    "title": "Data Analysis and Modeling in R",
+    "section": "Checking the model (LSR 15.9)",
+    "text": "Checking the model (LSR 15.9)\nWhenever we are looking at the regression model diagnostics, we are often considering the residual values. The types of residuals we can look at are:\n\n\nOrdinary Residuals - Raw\nStandardized Residuals\nStudentized Residuals - Takes into account what the SD would have been with the removal of the \\(i\\)th observation"
+  },
+  {
+    "objectID": "slides/aware_ai/AWARE_AIslides.html#checking-collinearity",
+    "href": "slides/aware_ai/AWARE_AIslides.html#checking-collinearity",
+    "title": "Data Analysis and Modeling in R",
+    "section": "Checking Collinearity",
+    "text": "Checking Collinearity\nWe need to check to see if our predictor variables are too highly correlated with each other\nTo do so we use variance inflation factors (VIF)\n\nThere will be a VIF that is associated with each predictor in the model\nInterpreting VIF (link) - Starts at 1 and goes up\n\n1 = Not Correlated\n1-5 = Moderately Correlated\n5+ = Highly Correlated\n\n\n\n#car::vif(m.3)"
+  },
+  {
+    "objectID": "slides/aware_ai/AWARE_AIslides.html#easystats-making-stats-easy",
+    "href": "slides/aware_ai/AWARE_AIslides.html#easystats-making-stats-easy",
+    "title": "Data Analysis and Modeling in R",
+    "section": "easystats making stats easy",
+    "text": "easystats making stats easy\nCan check the model with a simple function\n\n#check_model(m.3)"
+  },
+  {
+    "objectID": "AIWorkshop.html",
+    "href": "AIWorkshop.html",
+    "title": "AWARE AI Workshop",
     "section": "",
-    "text": "Welcome!\nWelcome to the landing page for the various workshops and classes hosted by Dustin Haraden, PhD.\n\n\nWorkshops\n\n1/17/2024 - AWARE AI: Data Analysis and Modeling in R"
+    "text": "This page houses information about a workshop on 1/17/2024 as a part of AWARE AI through the Rochester Institute of Technology.\n\n\n\nSlides for Presentation"
+  },
+  {
+    "objectID": "AIWorkshop.html#slides",
+    "href": "AIWorkshop.html#slides",
+    "title": "AWARE AI Workshop",
+    "section": "",
+    "text": "Slides for Presentation"
   },
   {
     "objectID": "about.html",
@@ -12,5 +96,26 @@
     "title": "About",
     "section": "",
     "text": "About the Presenter\nHello!\nMy name is Dustin Haraden and I am an Assistant Professor of Psychology at Rochester Institute of Technology. The focus of my research is examining chronotype/circadian rhythms and sleep processes as risk factors for youth depression and anxiety. I also aim to further examine the impact of measurement upon the conclusions that can be made throughout psychological science.\nI am also an advocate for open science practices and engaging in transparency throughout the research process.\nPlease reach out with any additional questions (send me an email)."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Workshops & Classes",
+    "section": "",
+    "text": "Welcome!\nWelcome to the landing page for the various workshops and classes hosted by Dustin Haraden, PhD.\n\n\nWorkshops\n\n1/17/2024 - AWARE AI: Data Analysis and Modeling in R"
+  },
+  {
+    "objectID": "slides/aware_ai/AWARE_AIslides.html#endogeneity",
+    "href": "slides/aware_ai/AWARE_AIslides.html#endogeneity",
+    "title": "Data Analysis and Modeling in R",
+    "section": "Endogeneity",
+    "text": "Endogeneity\nThere exists a relationship between your predictors and unexplained variation (i.e., error) in your outcome\nSome sources of endogeneity:\n\n\nOmitted Variables\n\nFailure to include relevant variables into the model\n\nMeasurement Error\n\nConstructs are measured ineffectively\n\nSample Selection\n\nThe sample that was assessed was not done randomly or fails to represent the population of interest"
+  },
+  {
+    "objectID": "slides/aware_ai/AWARE_AIslides.html#endogeneity---model-impact",
+    "href": "slides/aware_ai/AWARE_AIslides.html#endogeneity---model-impact",
+    "title": "Data Analysis and Modeling in R",
+    "section": "Endogeneity - Model Impact",
+    "text": "Endogeneity - Model Impact\nEndogeneity can impact a model in a number of ways including:\n\nBias in parameter estimates\nInflation of standard errors\nSpurious results\nSensitivity to model changes\n\n\nExample - Single Predictor\n\nfit1 &lt;- lm(performance_index ~ hours_studied, \n           data = student_perf)"
   }
 ]

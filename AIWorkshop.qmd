@@ -2,4 +2,10 @@
 title: "AWARE AI Workshop"
 ---
 
+# About:
+
 This page houses information about a workshop on 1/17/2024 as a part of AWARE AI through the Rochester Institute of Technology.
+
+## Slides
+
+-   [Slides for Presentation](slides/aware_ai/AWARE_AIslides-speaker.html){target="_blank"}

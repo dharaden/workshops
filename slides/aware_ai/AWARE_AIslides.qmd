@@ -1,6 +1,6 @@
 ---
-title: "Intro to RMarkdown"
-subtitle: "PSYC 640 - Fall 2023"
+title: "Data Analysis and Modeling in R"
+subtitle: "AWARE AI - 01/17/24"
 author: "Dustin Haraden, PhD"
 format: 
   revealjs:
@@ -53,21 +53,32 @@ knitr::opts_chunk$set(message = FALSE,
                       warning = FALSE) # suppress messages
 ```
 
-## Last Time
+## About Me
+
+::: {style="font-size: 30px"}
+**Dustin Haraden, PhD**
+
+Clinical/Community Psychology
+
+Research Focus: Developmental Psychopathology
 
 ::: nonincremental
--   Multiple Regression
+-   Examining Risk factors for depression and anxiety in children and adolescents
+-   Emphasis on circadian rhythms and sleep processes as well as pubertal development
+-   Investigating methodology as it impacts conclusions that can be made
+-   Quantitatively Oriented
+:::
+
+Want to expand into integrating AI and LLM's into clinical practice to increase efficacy of treatment and adherence to evidence based practices (e.g., clear case conceptualization and treatment planning)
 :::
 
 ------------------------------------------------------------------------
 
-## Today...
+## Overview
 
--   Review the regression stuff
+-   Model Based Inquiries
 
--   RMarkdown!
-
-    -   Even though we've been doing it this whole time
+-   "Hit by a bus" workflow
 
 ```{r, results = 'hide', message = F, warning = F}
 options(scipen=999)
@@ -85,55 +96,50 @@ library(janitor)
 
 ### Data for Today
 
+#Need to update with data that I can use for demo purposes
+
 ```{r}
 
 student_perf <- read_csv("https://raw.githubusercontent.com/dharaden/psyc640/main/data/Multiple_reg/Student_Performance.csv") %>% 
   clean_names()
 ```
 
-------------------------------------------------------------------------
+# Model Based Inquiries
 
-# Multiple Regression
-
-## Regression Equation
-
-Going from this:
-
-$$
-\hat{Y} = b_0 + b_1X1
-$$
-
-. . .
-
-To this
-
-$$
-\hat{Y} = b_0 + b_1X_1 + b_2X_2 + ... + b_kX_k
-$$
-
-. . .
-
-Regression coefficient values are now "partial" - Represents the contribution to all of outcome ($\hat{Y}$) from *unique* aspects of each $X$
+![](https://quotefancy.com/media/wallpaper/3840x2160/1503109-George-E-P-Box-Quote-All-models-are-wrong-but-some-are-useful.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-## Interpreting Coefficients
+## Endogeneity
 
-$$
-\hat{Y} = b_0 + b_1X_1 + b_2X_2 + ... + b_kX_k
-$$
+There exists a relationship between your predictors and unexplained variation (i.e., error) in your outcome
 
--   Focus on a specific predictor (e.g., $X_1$)
+Some sources of endogeneity:
 
--   For every 1 unit change in $X_1$, there is a $b_1$ unit change in $Y$, [**holding all other predictors constant**]{style="color:red"}
-
-**Note**: Properties of OLS still hold true
-
--   The sum of residuals will be 0
-
--   Each predictor ($X$) will be uncorrelated with the residuals
+::: {.incremental style="font-size: 30px"}
+-   Omitted Variables
+    -   Failure to include relevant variables into the model
+-   Measurement Error
+    -   Constructs are measured ineffectively
+-   Sample Selection
+    -   The sample that was assessed was not done randomly or fails to represent the population of interest
+:::
 
 ------------------------------------------------------------------------
+
+## Endogeneity - Model Impact
+
+Endogeneity can impact a model in a number of ways including:
+
+-   Bias in parameter estimates
+
+-   Inflation of standard errors
+
+-   Spurious results
+
+-   Sensitivity to model changes
+
+    ------------------------------------------------------------------------
 
 ### Example - Single Predictor
 
@@ -221,8 +227,8 @@ The concept is to ask how much variance is unexplained by our model. The leftove
 ### Model Comparison Example
 
 ```{r, , output.lines = 1:7}
-#m.2 <- lm(Sleep_Hours_Non_Schoolnight ~ Ageyears + #video_game_hrs, 
-#           data = school)
+#m.2 <- lm(Sleep_Hours_Non_Schoolnight ~ Ageyears + video_game_hrs, 
+#           data = student_perf)
 #m.3 <- lm(Sleep_Hours_Non_Schoolnight ~ Ageyears + #video_game_hrs + social_med_hrs, 
 #           data = school)
 #anova(m.2, m.3)

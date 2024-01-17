@@ -8,4 +8,4 @@ Welcome to the landing page for the various workshops and classes hosted by Dust
 
 # Workshops
 
--   1/17/2024 - AWARE AI: Data Analysis and Modeling in R
+-   [1/17/2024 - AWARE AI: Data Analysis and Modeling in R](AIWorkshop.qmd)
