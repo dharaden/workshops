@@ -1,0 +1,13 @@
+---
+title: "About"
+---
+
+# About the Presenter
+
+Hello!
+
+My name is Dustin Haraden and I am an Assistant Professor of Psychology at Rochester Institute of Technology. The focus of my research is examining chronotype/circadian rhythms and sleep processes as risk factors for youth depression and anxiety. I also aim to further examine the impact of measurement upon the conclusions that can be made throughout psychological science.
+
+I am also an advocate for open science practices and engaging in transparency throughout the research process.
+
+Please reach out with any additional questions [(send me an email).](mailto: dxhgsh@rit.edu)

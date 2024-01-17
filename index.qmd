@@ -1,0 +1,11 @@
+---
+title: "Workshops & Classes"
+---
+
+# Welcome!
+
+Welcome to the landing page for the various workshops and classes hosted by Dustin Haraden, PhD.
+
+# Workshops
+
+-   1/17/2024 - AWARE AI: Data Analysis and Modeling in R
