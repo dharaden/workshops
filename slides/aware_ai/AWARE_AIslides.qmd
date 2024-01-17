@@ -92,21 +92,13 @@ library(sjPlot)
 library(janitor)
 ```
 
-------------------------------------------------------------------------
-
-### Data for Today
-
-#Need to update with data that I can use for demo purposes
-
-```{r}
-
-student_perf <- read_csv("https://raw.githubusercontent.com/dharaden/psyc640/main/data/Multiple_reg/Student_Performance.csv") %>% 
-  clean_names()
-```
-
-# Model Based Inquiries
+# Model Based Inquiry
 
 ![](https://quotefancy.com/media/wallpaper/3840x2160/1503109-George-E-P-Box-Quote-All-models-are-wrong-but-some-are-useful.jpg){fig-align="center"}
+
+# Model Based Inquiry
+
+![](https://previews.123rf.com/images/nadianb/nadianb1511/nadianb151100269/48532756-baking-christmas-cookies-dough-on-the-table-cookie-cutters-and-cookies.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
@@ -139,13 +131,187 @@ Endogeneity can impact a model in a number of ways including:
 
 -   Sensitivity to model changes
 
-    ------------------------------------------------------------------------
+------------------------------------------------------------------------
 
-### Example - Single Predictor
+## Omitted Variables
+
+Is it possible to have all variables included in a model?
+
+We know that omitted variables will result in biased parameters
+
+We are also able to potentially detect when there may be omitted variables (e.g., modification indices, residual analyses, specification tests)
+
+***However***, it is important to be guided by a theoretical framework. This is an important foundation in model building.
+
+# Equivalent Models - SEM
+
+Let's assume that we have appropriately selected variables that minimize bias due to omission of variables
+
+What happens with models that are ***equivalent***? (**Note**: Different than *alternate* models)
+
+::: {style="font-size: 15px"}
+Taken from Curran & Bauer (2021) <https://centerstat.org/equivalent-models/>
+:::
+
+------------------------------------------------------------------------
+
+## Alternate vs. Equivalent Models
+
+Alternate models can be tested and compared to one another based on their model fit
+
+When alternate models are created, they are likely to have *differences* in model fit
+
+**Equivalent Models** on the other hand have different representations of the structure of the model but have ***identical*** model fit
+
+------------------------------------------------------------------------
+
+## Equivalent Models - Example
+
+Model 1:
+
+![](med1.png){fig-align="center"}
+
+. . .
+
+Model 2:
+
+![](med2.png){fig-align="center"}
+
+. . .
+
+Model 3:
+
+![](model3.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+## Equivalent Models - Example
+
+All three models shown previously are numerically equivalent despite making three clearly different claims about the reality that they represent
+
+It is important to then go back to theory to identify which is the most useful (or least wrong going back to the quote)
+
+**Note:** This example only includes three measured variables. The number of equivalent models will increase as the complexity of the model increases (For further reading, see Lee & Hershberger (1990). A simple rule for generating equivalent models in covariance structure modeling. *Multivariate Behavioral Research, 25*, 313-334.)
+
+# Bus Factor Workflow
+
+![](https://kcet.brightspotcdn.com/dims4/default/ed3731a/2147483647/strip/true/crop/1920x1008+0+36/resize/1200x630!/quality/90/?url=http%3A%2F%2Fkcet-brightspot.s3.us-east-1.amazonaws.com%2Flegacy%2Fwp-content%2Fuploads%2F2020%2F09%2Ffeatured.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+## Workflow Framework
+
+Anyone should be able to run your analyses at any point
+
+When working with R/R-Studio, there are some things that can be very helpful to consider:
+
+-   Using a "Project"
+
+-   Incorporating relative file paths
+
+-   Implement RMarkdown as frequently as possible
+
+The following slides will have additional resources, but now we will transition to a demo of the workflow. I will work to move back and forth between these slides and the demo
+
+The majority of this can be found in [rstats.wtf](https://rstats.wtf/)
+
+------------------------------------------------------------------------
+
+### Getting Started in R-Studio
+
+::: columns
+::: {.column width="45%"}
+It is important to start with a blank slate
+
+Default is to have everything kept around
+
+-   You wouldn't do this when you are baking
+
+Navigate to ***Tools \>\> Global Options***
+:::
+
+::: {.column width="55%"}
+![](rworkspace.png){fig-align="center"}
+:::
+:::
+
+------------------------------------------------------------------------
+
+### Setting the Boundary - Kitchen
+
+Use a project-oriented workflow ([link](https://rstats.wtf/projects) and [another resource](https://danovando.github.io/reproducible-workflow/presentations/reproducibility-101#8))
+
+When working on an analysis/project you will need to define where this is taking place
+
+-   When baking, you are going to be working in your own kitchen
+
+A Project will act as the bounds in which you will be able to "bake" in (i.e., **your** kitchen)
+
+This means that everything you are going to want to work with will be in this Project/kitchen
+
+------------------------------------------------------------------------
+
+### Creating your Recipe - RMarkdown
+
+Using RMarkdown allows us to embed both regular text and code all into a single document
+
+Upon completion, a document can be `knit` together in either a PDF, Word or HTML file to share with collaborators
+
+![](images/clipboard-2266633380.png)
+
+------------------------------------------------------------------------
+
+### Be Clear - Recipe not Blog
+
+Start every script with all appropriate libraries and information
+
+This is where I load the data and will call the libraries that I want to use
+
+You want to get right into the recipe and not have to read too far before getting there
+
+------------------------------------------------------------------------
+
+### Relative Paths
+
+> *If the first line of your R script is*
+>
+> setwd("C:\\Users\\jenny\\path\\that\\only\\I\\have")
+>
+> *I will come into your office and SET YOUR COMPUTER ON FIRE* 🔥.
+>
+> *If the first line of your R script is*
+>
+> rm(list = ls())
+>
+> *I will come into your office and SET YOUR COMPUTER ON FIRE* 🔥.
+>
+> --- Jenny Bryan
+
+------------------------------------------------------------------------
+
+### `here` package
+
+[link](https://here.r-lib.org/)
+
+![](here.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+## Example - Regression
 
 ```{r}
-fit1 <- lm(performance_index ~ hours_studied, 
+student_perf <- read_csv("https://raw.githubusercontent.com/dharaden/psyc640/main/data/Multiple_reg/Student_Performance.csv") %>%    
+  clean_names()
+```
+
+------------------------------------------------------------------------
+
+### Regression- Single Predictor
+
+```{r}
+fit1 <- lm(performance_index ~ previous_scores, 
            data = student_perf)
+summary(fit1)
 ```
 
 ------------------------------------------------------------------------
@@ -160,194 +326,48 @@ sjPlot::tab_model(fit1)
 
 ------------------------------------------------------------------------
 
-### Example - Visualizing
-
-How do we visualize this?
-
-------------------------------------------------------------------------
-
-### Example - Visualizing
-
-How do we visualize this?
-
-```{r}
-car::avPlots(fit1)
-```
-
-------------------------------------------------------------------------
-
-## Holding Constant??? Wut
-
-```{r, output.lines = 10:15}
-summary(fit1)
-```
-
--   The average amount of sleep decreases by 0.08 hours for every 1 year older the youth his **holding the number of hours playing video games and the number of hours on social media constant.**
-
--   The average amount of sleep decreases by 0.004 hours for every 1 hour of social media use **holding age and hours of video game usage constant.**
-
-What does this mean?? Also can be called "controlling for" or "taking into account" the other variables
-
-Language comes from experimental research in which they can keep one condition unchanged while manipulating the other
-
-------------------------------------------------------------------------
-
-## Holding Constant - "Controlling for"
-
-![](/images/control.gif){fig-align="center"}
-
-Taken from [\@nickchk](https://twitter.com/nickchk)
-
-------------------------------------------------------------------------
-
-## Creating the Model
-
-There can be many different ways in which we create and compare models with multiple predictors
-
-::: incremental
--   **Simultaneous**: Enter all variables in the model at once
-    -   Usually the most conservative and defensible approach (unless there is theory to support a hierarchical approach)
--   **Hierarchically**: Building a sequence of models where a single variable is included/excluded at each step
-    -   This is **hierarchical/stepwise regression.** Different from HLM (Hierarchical Linear Modeling)
-:::
-
-------------------------------------------------------------------------
-
-## Model Selection ([LSR 15.10](https://learningstatisticswithr.com/book/regression.html#modelselreg))
-
-How can we tell if one model is "better" than the other (it explains more variance in outcome)?
-
--   Each predictor (or set of predictors) is investigated as to what it adds to the model when it is entered
--   The order of the variables depends on an *a priori* hypothesis
-
-The concept is to ask how much variance is unexplained by our model. The leftovers can be compared to an alternate model to see if the new variable adds anything or if we should focus on **parsimony**
-
-------------------------------------------------------------------------
-
 ### Model Comparison Example
 
 ```{r, , output.lines = 1:7}
-#m.2 <- lm(Sleep_Hours_Non_Schoolnight ~ Ageyears + video_game_hrs, 
-#           data = student_perf)
-#m.3 <- lm(Sleep_Hours_Non_Schoolnight ~ Ageyears + #video_game_hrs + social_med_hrs, 
-#           data = school)
-#anova(m.2, m.3)
-```
+m.2 <- lm(performance_index ~ previous_scores + hours_studied, 
+           data = student_perf)
 
-```{r}
-#r2(m.2)
-#r2(m.3)
+m.3 <- lm(performance_index ~ previous_scores + hours_studied + sleep_hours, 
+           data = student_perf)
+
+tab_model(m.2, m.3)
 ```
 
 ------------------------------------------------------------------------
 
-### Model Comparison - sjPlot
+## Model Diagnostics
 
-```{r}
-#tab_model(m.2, m.3)
-```
-
-# Model Diagnostics
-
-------------------------------------------------------------------------
-
-## Checking the model ([LSR 15.9](https://learningstatisticswithr.com/book/regression.html#regressiondiagnostics))
-
-Whenever we are looking at the regression model diagnostics, we are often considering the residual values. The types of residuals we can look at are:
-
-::: incremental
--   Ordinary Residuals - Raw
-
--   Standardized Residuals
-
--   Studentized Residuals - Takes into account what the SD *would* have been with the removal of the $i$th observation
-:::
-
-------------------------------------------------------------------------
-
-### Model Checks - Outlier
-
-We tend to look for various things that may impact our results through the lens of residuals
-
-**1) Outliers** - variables with high Studentized Residuals
-
-![](/images/outlier.PNG){fig-align="center"}
-
-------------------------------------------------------------------------
-
-### Model Checks - Leverage
-
-We tend to look for various things that may impact our results through the lens of residuals
-
-**2) Leverage** - variable is different in all ways from others (not just residuals)
-
-![](/images/leverage.PNG){fig-align="center"}
-
-------------------------------------------------------------------------
-
-### Model Checks - Influence
-
-We tend to look for various things that may impact our results through the lens of residuals
-
-**3) Influence** - outlier with high leverage (*Cook's Distance*)
-
-![](/images/influence.PNG){fig-align="center"}
-
-------------------------------------------------------------------------
-
-### Model Checks - Plots
-
-```{r}
-#Cook's Distance
-#plot(m.3, which = 4)
-```
-
-------------------------------------------------------------------------
-
-### Model Checks - Plots
-
-```{r}
-#Leverage
-#plot(m.3, which = 5)
-```
-
-------------------------------------------------------------------------
-
-## Checking Collinearity
-
-We need to check to see if our predictor variables are too highly correlated with each other
-
-To do so we use ***variance inflation factors (VIF)***
-
--   There will be a VIF that is associated with each predictor in the model
--   Interpreting VIF ([link](https://www.statisticshowto.com/variance-inflation-factor/)) - Starts at 1 and goes up
-    -   1 = Not Correlated
-    -   1-5 = Moderately Correlated
-    -   5+ = Highly Correlated
-
-```{r}
-#car::vif(m.3)
-```
-
-------------------------------------------------------------------------
-
-## `easystats` making stats easy
+### `easystats` making stats easy
 
 Can check the model with a simple function
 
 ```{r}
-#check_model(m.3)
+check_model(m.3)
 ```
 
-# Rounding up Multiple Regression
+------------------------------------------------------------------------
 
-It is a powerful and complex tool
+## Some Useful Resources for RMarkdown
 
-# Next time...
+[R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/)
 
--   More R fun
--   Group work
+[R Markdown Cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/rmarkdown-2.0.pdf)
 
-# Stop...Group Time
+[R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/)
 
-![](/images/mchammer.gif){fig-align="center"}
+[Custom Formats for R Markdown](https://posit.co/blog/r-markdown-custom-formats/)
+
+# Summary
+
+Consider what is in your model and always go back to theory
+
+Focus on establishing a reproducible workflow
+
+Reach out with any other questions or if you just want to chat
+
+Dustin Haraden [dxhgsh\@rit.edu](mailto: dxhgsh@rit.edu)

@@ -438,20 +438,16 @@ Dustin Haraden, PhD
 <span id="cb1-9"><a href="#cb1-9"></a><span class="fu">library</span>(janitor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section class="slide level2">
-
-<h3 id="data-for-today">Data for Today</h3>
-<p>#Need to update with data that I can use for demo purposes</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>student_perf <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/dharaden/psyc640/main/data/Multiple_reg/Student_Performance.csv"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-2"><a href="#cb2-2"></a>  <span class="fu">clean_names</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section>
-<section id="model-based-inquiries" class="title-slide slide level1 center">
-<h1>Model Based Inquiries</h1>
+<section id="model-based-inquiry" class="title-slide slide level1 center">
+<h1>Model Based Inquiry</h1>
 
 <img data-src="https://quotefancy.com/media/wallpaper/3840x2160/1503109-George-E-P-Box-Quote-All-models-are-wrong-but-some-are-useful.jpg" class="r-stretch quarto-figure-center"></section>
+
+<section>
+<section id="model-based-inquiry-1" class="title-slide slide level1 center">
+<h1>Model Based Inquiry</h1>
+
+<img data-src="https://previews.123rf.com/images/nadianb/nadianb1511/nadianb151100269/48532756-baking-christmas-cookies-dough-on-the-table-cookie-cutters-and-cookies.jpg" class="r-stretch quarto-figure-center"></section>
 <section id="endogeneity" class="slide level2">
 <h2>Endogeneity</h2>
 <p>There exists a relationship between your predictors and unexplained variation (i.e., error) in your outcome</p>
@@ -480,13 +476,177 @@ Dustin Haraden, PhD
 <li><p>Bias in parameter estimates</p></li>
 <li><p>Inflation of standard errors</p></li>
 <li><p>Spurious results</p></li>
-<li><p>Sensitivity to model changes</p>
-<hr></li>
+<li><p>Sensitivity to model changes</p></li>
 </ul>
-<h3 id="example---single-predictor">Example - Single Predictor</h3>
+</section>
+<section id="omitted-variables" class="slide level2">
+<h2>Omitted Variables</h2>
+<p>Is it possible to have all variables included in a model?</p>
+<p>We know that omitted variables will result in biased parameters</p>
+<p>We are also able to potentially detect when there may be omitted variables (e.g., modification indices, residual analyses, specification tests)</p>
+<p><strong><em>However</em></strong>, it is important to be guided by a theoretical framework. This is an important foundation in model building.</p>
+</section></section>
+<section>
+<section id="equivalent-models---sem" class="title-slide slide level1 center">
+<h1>Equivalent Models - SEM</h1>
+<p>Let’s assume that we have appropriately selected variables that minimize bias due to omission of variables</p>
+<p>What happens with models that are <strong><em>equivalent</em></strong>? (<strong>Note</strong>: Different than <em>alternate</em> models)</p>
+<div style="font-size: 15px">
+<p>Taken from Curran &amp; Bauer (2021) <a href="https://centerstat.org/equivalent-models/" class="uri">https://centerstat.org/equivalent-models/</a></p>
+</div>
+</section>
+<section id="alternate-vs.-equivalent-models" class="slide level2">
+<h2>Alternate vs.&nbsp;Equivalent Models</h2>
+<p>Alternate models can be tested and compared to one another based on their model fit</p>
+<p>When alternate models are created, they are likely to have <em>differences</em>&nbsp;in model fit</p>
+<p><strong>Equivalent Models</strong> on the other hand have different representations of the structure of the model but have <strong><em>identical</em></strong> model fit</p>
+</section>
+<section id="equivalent-models---example" class="slide level2">
+<h2>Equivalent Models - Example</h2>
+<p>Model 1:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="med1.png"></p>
+</figure>
+</div>
+<div class="fragment">
+<p>Model 2:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="med2.png"></p>
+</figure>
+</div>
+</div>
+<div class="fragment">
+<p>Model 3:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="model3.png"></p>
+</figure>
+</div>
+</div>
+</section>
+<section id="equivalent-models---example-1" class="slide level2">
+<h2>Equivalent Models - Example</h2>
+<p>All three models shown previously are numerically equivalent despite making three clearly different claims about the reality that they represent</p>
+<p>It is important to then go back to theory to identify which is the most useful (or least wrong going back to the quote)</p>
+<p><strong>Note:</strong> This example only includes three measured variables. The number of equivalent models will increase as the complexity of the model increases (For further reading, see Lee &amp; Hershberger (1990). A simple rule for generating equivalent models in covariance structure modeling. <em>Multivariate Behavioral Research, 25</em>, 313-334.)</p>
+</section></section>
+<section>
+<section id="bus-factor-workflow" class="title-slide slide level1 center">
+<h1>Bus Factor Workflow</h1>
+
+<img data-src="https://kcet.brightspotcdn.com/dims4/default/ed3731a/2147483647/strip/true/crop/1920x1008+0+36/resize/1200x630!/quality/90/?url=http%3A%2F%2Fkcet-brightspot.s3.us-east-1.amazonaws.com%2Flegacy%2Fwp-content%2Fuploads%2F2020%2F09%2Ffeatured.jpg" class="r-stretch quarto-figure-center"></section>
+<section id="workflow-framework" class="slide level2">
+<h2>Workflow Framework</h2>
+<p>Anyone should be able to run your analyses at any point</p>
+<p>When working with R/R-Studio, there are some things that can be very helpful to consider:</p>
+<ul>
+<li><p>Using a “Project”</p></li>
+<li><p>Incorporating relative file paths</p></li>
+<li><p>Implement RMarkdown as frequently as possible</p></li>
+</ul>
+<p>The following slides will have additional resources, but now we will transition to a demo of the workflow. I will work to move back and forth between these slides and the demo</p>
+<p>The majority of this can be found in <a href="https://rstats.wtf/">rstats.wtf</a></p>
+</section>
+<section class="slide level2">
+
+<h3 id="getting-started-in-r-studio">Getting Started in R-Studio</h3>
+<div class="columns">
+<div class="column" style="width:45%;">
+<p>It is important to start with a blank slate</p>
+<p>Default is to have everything kept around</p>
+<ul>
+<li>You wouldn’t do this when you are baking</li>
+</ul>
+<p>Navigate to <strong><em>Tools &gt;&gt; Global Options</em></strong></p>
+</div><div class="column" style="width:55%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="rworkspace.png"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="setting-the-boundary---kitchen">Setting the Boundary - Kitchen</h3>
+<p>Use a project-oriented workflow (<a href="https://rstats.wtf/projects">link</a> and <a href="https://danovando.github.io/reproducible-workflow/presentations/reproducibility-101#8">another resource</a>)</p>
+<p>When working on an analysis/project you will need to define where this is taking place</p>
+<ul>
+<li>When baking, you are going to be working in your own kitchen</li>
+</ul>
+<p>A Project will act as the bounds in which you will be able to “bake” in (i.e., <strong>your</strong> kitchen)</p>
+<p>This means that everything you are going to want to work with will be in this Project/kitchen</p>
+</section>
+<section class="slide level2">
+
+<h3 id="creating-your-recipe---rmarkdown">Creating your Recipe - RMarkdown</h3>
+<p>Using RMarkdown allows us to embed both regular text and code all into a single document</p>
+<p>Upon completion, a document can be <code>knit</code> together in either a PDF, Word or HTML file to share with collaborators</p>
+
+<img data-src="images/clipboard-2266633380.png" class="r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="be-clear---recipe-not-blog">Be Clear - Recipe not Blog</h3>
+<p>Start every script with all appropriate libraries and information</p>
+<p>This is where I load the data and will call the libraries that I want to use</p>
+<p>You want to get right into the recipe and not have to read too far before getting there</p>
+</section>
+<section class="slide level2">
+
+<h3 id="relative-paths">Relative Paths</h3>
+<blockquote>
+<p><em>If the first line of your R script is</em></p>
+<p>setwd(“C:\Users\jenny\path\that\only\I\have”)</p>
+<p><em>I will come into your office and SET YOUR COMPUTER ON FIRE</em> 🔥.</p>
+<p><em>If the first line of your R script is</em></p>
+<p>rm(list = ls())</p>
+<p><em>I will come into your office and SET YOUR COMPUTER ON FIRE</em> 🔥.</p>
+<p>— Jenny Bryan</p>
+</blockquote>
+</section>
+<section class="slide level2">
+
+<h3 id="here-package"><code>here</code> package</h3>
+<p><a href="https://here.r-lib.org/">link</a></p>
+
+<img data-src="here.png" class="r-stretch quarto-figure-center"></section>
+<section id="example---regression" class="slide level2">
+<h2>Example - Regression</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(performance_index <span class="sc">~</span> hours_studied, </span>
-<span id="cb3-2"><a href="#cb3-2"></a>           <span class="at">data =</span> student_perf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>student_perf <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/dharaden/psyc640/main/data/Multiple_reg/Student_Performance.csv"</span>) <span class="sc">%&gt;%</span>    </span>
+<span id="cb2-2"><a href="#cb2-2"></a>  <span class="fu">clean_names</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="regression--single-predictor">Regression- Single Predictor</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(performance_index <span class="sc">~</span> previous_scores, </span>
+<span id="cb3-2"><a href="#cb3-2"></a>           <span class="at">data =</span> student_perf)</span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="fu">summary</span>(fit1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = performance_index ~ previous_scores, data = student_perf)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-15.4067  -6.4697  -0.1545   6.4971  15.1309 
+
+Coefficients:
+                 Estimate Std. Error t value             Pr(&gt;|t|)    
+(Intercept)     -17.25040    2.29551  -7.515     0.00000000000174 ***
+previous_scores   1.04204    0.03192  32.644 &lt; 0.0000000000000002 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 7.843 on 205 degrees of freedom
+Multiple R-squared:  0.8387,    Adjusted R-squared:  0.8379 
+F-statistic:  1066 on 1 and 205 DF,  p-value: &lt; 0.00000000000000022</code></pre>
+</div>
 </div>
 </section>
 <section class="slide level2">
@@ -494,7 +654,7 @@ Dustin Haraden, PhD
 <h3 id="example---coefficient-interpretation">Example - Coefficient interpretation</h3>
 <p><a href="https://strengejacke.github.io/sjPlot/articles/tab_model_estimates.html">sjPlot</a></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>sjPlot<span class="sc">::</span><span class="fu">tab_model</span>(fit1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>sjPlot<span class="sc">::</span><span class="fu">tab_model</span>(fit1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table data-quarto-postprocess="true" style="border-collapse:collapse; border:none;">
 <tbody>
@@ -510,14 +670,14 @@ Dustin Haraden, PhD
 </tr>
 <tr class="odd">
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;">(Intercept)</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">39.65</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">34.40&nbsp;–&nbsp;44.89</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-17.25</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-21.78&nbsp;–&nbsp;-12.72</td>
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
 </tr>
 <tr class="even">
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">hours studied</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">3.13</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">2.21&nbsp;–&nbsp;4.04</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">previous scores</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">1.04</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.98&nbsp;–&nbsp;1.10</td>
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
 </tr>
 <tr class="odd">
@@ -526,7 +686,7 @@ Dustin Haraden, PhD
 </tr>
 <tr class="even">
 <td style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm;">R<sup>2</sup> / R<sup>2</sup> adjusted</td>
-<td colspan="3" style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm;">0.181 / 0.177</td>
+<td colspan="3" style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm;">0.839 / 0.838</td>
 </tr>
 </tbody>
 </table>
@@ -537,187 +697,109 @@ Dustin Haraden, PhD
 </section>
 <section class="slide level2">
 
-<h3 id="example---visualizing">Example - Visualizing</h3>
-<p>How do we visualize this?</p>
-</section>
-<section class="slide level2">
-
-<h3 id="example---visualizing-1">Example - Visualizing</h3>
-<p>How do we visualize this?</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>car<span class="sc">::</span><span class="fu">avPlots</span>(fit1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
-<img data-src="AWARE_AIslides_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
-<section id="holding-constant-wut" class="slide level2">
-<h2>Holding Constant??? Wut</h2>
-<div class="cell" data-output.lines="[10,11,12,13,14,15]">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">summary</span>(fit1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>...
-              Estimate Std. Error t value             Pr(&gt;|t|)    
-(Intercept)     39.646      2.659  14.912 &lt; 0.0000000000000002 ***
-hours_studied    3.128      0.464   6.741       0.000000000157 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-...</code></pre>
-</div>
-</div>
-<ul>
-<li><p>The average amount of sleep decreases by 0.08 hours for every 1 year older the youth his <strong>holding the number of hours playing video games and the number of hours on social media constant.</strong></p></li>
-<li><p>The average amount of sleep decreases by 0.004 hours for every 1 hour of social media use <strong>holding age and hours of video game usage constant.</strong></p></li>
-</ul>
-<p>What does this mean?? Also can be called “controlling for” or “taking into account” the other variables</p>
-<p>Language comes from experimental research in which they can keep one condition unchanged while manipulating the other</p>
-</section>
-<section id="holding-constant---controlling-for" class="slide level2">
-<h2>Holding Constant - “Controlling for”</h2>
-
-<img data-src="../..\images/control.gif" class="r-stretch quarto-figure-center"><p>Taken from <a href="https://twitter.com/nickchk">@nickchk</a></p>
-</section>
-<section id="creating-the-model" class="slide level2">
-<h2>Creating the Model</h2>
-<p>There can be many different ways in which we create and compare models with multiple predictors</p>
-<div>
-<ul>
-<li class="fragment"><strong>Simultaneous</strong>: Enter all variables in the model at once
-<ul>
-<li class="fragment">Usually the most conservative and defensible approach (unless there is theory to support a hierarchical approach)</li>
-</ul></li>
-<li class="fragment"><strong>Hierarchically</strong>: Building a sequence of models where a single variable is included/excluded at each step
-<ul>
-<li class="fragment">This is <strong>hierarchical/stepwise regression.</strong> Different from HLM (Hierarchical Linear Modeling)</li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="model-selection-lsr-15.10" class="slide level2">
-<h2>Model Selection (<a href="https://learningstatisticswithr.com/book/regression.html#modelselreg">LSR 15.10</a>)</h2>
-<p>How can we tell if one model is “better” than the other (it explains more variance in outcome)?</p>
-<ul>
-<li>Each predictor (or set of predictors) is investigated as to what it adds to the model when it is entered</li>
-<li>The order of the variables depends on an <em>a priori</em> hypothesis</li>
-</ul>
-<p>The concept is to ask how much variance is unexplained by our model. The leftovers can be compared to an alternate model to see if the new variable adds anything or if we should focus on <strong>parsimony</strong></p>
-</section>
-<section class="slide level2">
-
 <h3 id="model-comparison-example">Model Comparison Example</h3>
 <div class="cell" data-output.lines="[1,2,3,4,5,6,7]">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co">#m.2 &lt;- lm(Sleep_Hours_Non_Schoolnight ~ Ageyears + video_game_hrs, </span></span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="co">#           data = student_perf)</span></span>
-<span id="cb8-3"><a href="#cb8-3"></a><span class="co">#m.3 &lt;- lm(Sleep_Hours_Non_Schoolnight ~ Ageyears + #video_game_hrs + social_med_hrs, </span></span>
-<span id="cb8-4"><a href="#cb8-4"></a><span class="co">#           data = school)</span></span>
-<span id="cb8-5"><a href="#cb8-5"></a><span class="co">#anova(m.2, m.3)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>m<span class="fl">.2</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(performance_index <span class="sc">~</span> previous_scores <span class="sc">+</span> hours_studied, </span>
+<span id="cb6-2"><a href="#cb6-2"></a>           <span class="at">data =</span> student_perf)</span>
+<span id="cb6-3"><a href="#cb6-3"></a></span>
+<span id="cb6-4"><a href="#cb6-4"></a>m<span class="fl">.3</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(performance_index <span class="sc">~</span> previous_scores <span class="sc">+</span> hours_studied <span class="sc">+</span> sleep_hours, </span>
+<span id="cb6-5"><a href="#cb6-5"></a>           <span class="at">data =</span> student_perf)</span>
+<span id="cb6-6"><a href="#cb6-6"></a></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="fu">tab_model</span>(m<span class="fl">.2</span>, m<span class="fl">.3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table data-quarto-postprocess="true" style="border-collapse:collapse; border:none;">
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: normal; font-weight: bold; padding: 0.2cm;">&nbsp;</td>
+<td colspan="3" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: normal; font-weight: bold; padding: 0.2cm;">performance index</td>
+<td colspan="3" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: normal; font-weight: bold; padding: 0.2cm;">performance index</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">Predictors</td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">Estimates</td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">CI</td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">p</td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">Estimates</td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">CI</td>
+<td style="text-align: center;">p</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">(Intercept)</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-30.35</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-31.69&nbsp;–&nbsp;-29.02</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-33.16</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-34.75&nbsp;–&nbsp;-31.57</td>
+<td style="text-align: center;"><strong>&lt;0.001</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">previous scores</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">1.02</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">1.01&nbsp;–&nbsp;1.04</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">1.02</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">1.01&nbsp;–&nbsp;1.04</td>
+<td style="text-align: center;"><strong>&lt;0.001</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">hours studied</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">2.84</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">2.73&nbsp;–&nbsp;2.95</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">2.85</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">2.75&nbsp;–&nbsp;2.96</td>
+<td style="text-align: center;"><strong>&lt;0.001</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">sleep hours</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"></td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"></td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"></td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.44</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.28&nbsp;–&nbsp;0.59</td>
+<td style="text-align: center;"><strong>&lt;0.001</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm; border-top: 1px solid;">Observations</td>
+<td colspan="3" style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm; border-top: 1px solid;">207</td>
+<td colspan="3" style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm; border-top: 1px solid;">207</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm;">R<sup>2</sup> / R<sup>2</sup> adjusted</td>
+<td colspan="3" style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm;">0.988 / 0.988</td>
+<td colspan="3" style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm;">0.990 / 0.990</td>
+</tr>
+</tbody>
+</table>
+
+
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co">#r2(m.2)</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="co">#r2(m.3)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section class="slide level2">
-
-<h3 id="model-comparison---sjplot">Model Comparison - sjPlot</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co">#tab_model(m.2, m.3)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section></section>
-<section>
-<section id="model-diagnostics" class="title-slide slide level1 center">
-<h1>Model Diagnostics</h1>
-
-</section>
-<section id="checking-the-model-lsr-15.9" class="slide level2">
-<h2>Checking the model (<a href="https://learningstatisticswithr.com/book/regression.html#regressiondiagnostics">LSR 15.9</a>)</h2>
-<p>Whenever we are looking at the regression model diagnostics, we are often considering the residual values. The types of residuals we can look at are:</p>
-<div>
-<ul>
-<li class="fragment"><p>Ordinary Residuals - Raw</p></li>
-<li class="fragment"><p>Standardized Residuals</p></li>
-<li class="fragment"><p>Studentized Residuals - Takes into account what the SD <em>would</em> have been with the removal of the <span class="math inline">\(i\)</span>th observation</p></li>
-</ul>
-</div>
-</section>
-<section class="slide level2">
-
-<h3 id="model-checks---outlier">Model Checks - Outlier</h3>
-<p>We tend to look for various things that may impact our results through the lens of residuals</p>
-<p><strong>1) Outliers</strong> - variables with high Studentized Residuals</p>
-
-<img data-src="../..\images/outlier.PNG" class="r-stretch quarto-figure-center"></section>
-<section class="slide level2">
-
-<h3 id="model-checks---leverage">Model Checks - Leverage</h3>
-<p>We tend to look for various things that may impact our results through the lens of residuals</p>
-<p><strong>2) Leverage</strong> - variable is different in all ways from others (not just residuals)</p>
-
-<img data-src="../..\images/leverage.PNG" class="r-stretch quarto-figure-center"></section>
-<section class="slide level2">
-
-<h3 id="model-checks---influence">Model Checks - Influence</h3>
-<p>We tend to look for various things that may impact our results through the lens of residuals</p>
-<p><strong>3) Influence</strong> - outlier with high leverage (<em>Cook’s Distance</em>)</p>
-
-<img data-src="../..\images/influence.PNG" class="r-stretch quarto-figure-center"></section>
-<section class="slide level2">
-
-<h3 id="model-checks---plots">Model Checks - Plots</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co">#Cook's Distance</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a><span class="co">#plot(m.3, which = 4)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section class="slide level2">
-
-<h3 id="model-checks---plots-1">Model Checks - Plots</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co">#Leverage</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="co">#plot(m.3, which = 5)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="checking-collinearity" class="slide level2">
-<h2>Checking Collinearity</h2>
-<p>We need to check to see if our predictor variables are too highly correlated with each other</p>
-<p>To do so we use <strong><em>variance inflation factors (VIF)</em></strong></p>
-<ul>
-<li>There will be a VIF that is associated with each predictor in the model</li>
-<li>Interpreting VIF (<a href="https://www.statisticshowto.com/variance-inflation-factor/">link</a>) - Starts at 1 and goes up
-<ul>
-<li>1 = Not Correlated</li>
-<li>1-5 = Moderately Correlated</li>
-<li>5+ = Highly Correlated</li>
-</ul></li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co">#car::vif(m.3)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="easystats-making-stats-easy" class="slide level2">
-<h2><code>easystats</code> making stats easy</h2>
+<section id="model-diagnostics" class="slide level2">
+<h2>Model Diagnostics</h2>
+<h3 id="easystats-making-stats-easy"><code>easystats</code> making stats easy</h3>
 <p>Can check the model with a simple function</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co">#check_model(m.3)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">check_model</span>(m<span class="fl">.3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
 </div>
+<img data-src="AWARE_AIslides_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
+<section id="some-useful-resources-for-rmarkdown" class="slide level2">
+<h2>Some Useful Resources for RMarkdown</h2>
+<p><a href="https://bookdown.org/yihui/rmarkdown/">R Markdown: The Definitive Guide</a></p>
+<p><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/rmarkdown-2.0.pdf">R Markdown Cheatsheet</a></p>
+<p><a href="https://bookdown.org/yihui/rmarkdown-cookbook/">R Markdown Cookbook</a></p>
+<p><a href="https://posit.co/blog/r-markdown-custom-formats/">Custom Formats for R Markdown</a></p>
 </section></section>
-<section id="rounding-up-multiple-regression" class="title-slide slide level1 center">
-<h1>Rounding up Multiple Regression</h1>
-<p>It is a powerful and complex tool</p>
-</section>
+<section id="summary" class="title-slide slide level1 center">
+<h1>Summary</h1>
+<p>Consider what is in your model and always go back to theory</p>
+<p>Focus on establishing a reproducible workflow</p>
+<p>Reach out with any other questions or if you just want to chat</p>
+<p>Dustin Haraden <a href="mailto:%20dxhgsh@rit.edu">dxhgsh@rit.edu</a></p>
 
-<section id="next-time" class="title-slide slide level1 center">
-<h1>Next time…</h1>
-<ul>
-<li>More R fun</li>
-<li>Group work</li>
-</ul>
-</section>
-
-<section id="stopgroup-time" class="title-slide slide level1 center">
-<h1>Stop…Group Time</h1>
-
-
-<img data-src="../..\images/mchammer.gif" class="r-stretch quarto-figure-center"><div class="footer footer-default">
+<div class="footer footer-default">
 
 </div>
 </section>

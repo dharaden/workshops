@@ -1,80 +1,38 @@
 [
   {
-    "objectID": "slides/aware_ai/AWARE_AIslides.html#about-me",
-    "href": "slides/aware_ai/AWARE_AIslides.html#about-me",
-    "title": "Data Analysis and Modeling in R",
-    "section": "About Me",
-    "text": "About Me\n\nDustin Haraden, PhD\nClinical/Community Psychology\nResearch Focus: Developmental Psychopathology\n\n\nExamining Risk factors for depression and anxiety in children and adolescents\nEmphasis on circadian rhythms and sleep processes as well as pubertal development\nInvestigating methodology as it impacts conclusions that can be made\nQuantitatively Oriented\n\n\nWant to expand into integrating AI and LLM’s into clinical practice to increase efficacy of treatment and adherence to evidence based practices (e.g., clear case conceptualization and treatment planning)"
+    "objectID": "slides/aware_ai/ExampleMarkdown.html",
+    "href": "slides/aware_ai/ExampleMarkdown.html",
+    "title": "Example Markdown",
+    "section": "",
+    "text": "library(dplyr)\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\nlibrary(easystats)\n\n# Attaching packages: easystats 0.7.0 (red = needs update)\n✔ bayestestR  0.13.1   ✔ correlation 0.8.4 \n✖ datawizard  0.9.0    ✔ effectsize  0.8.6 \n✖ insight     0.19.6   ✔ modelbased  0.8.6 \n✔ performance 0.10.8   ✔ parameters  0.21.3\n✖ report      0.5.7    ✔ see         0.8.1 \n\nRestart the R-Session and update packages with `easystats::easystats_update()`.\n\nlibrary(sjPlot)\n\nInstall package \"strengejacke\" from GitHub (`devtools::install_github(\"strengejacke/strengejacke\")`) to load all sj-packages at once!\n\nlibrary(here)\n\nhere() starts at C:/Users/Dustin_Haraden/Documents/GitHub/workshops\n\nlibrary(janitor)\n\n\nAttaching package: 'janitor'\n\n\nThe following object is masked from 'package:insight':\n\n    clean_names\n\n\nThe following objects are masked from 'package:datawizard':\n\n    remove_empty, remove_empty_rows\n\n\nThe following objects are masked from 'package:stats':\n\n    chisq.test, fisher.test\n\nschool_data &lt;- read.csv(here(\"slides\", \n                             \"aware_ai\", \n                             \"data\", \n                             \"NM-NY_CAS.csv\")) %&gt;% \n  clean_names()\n\nNow that we have the data loaded in, we can begin to examine things in more detail"
   },
   {
-    "objectID": "slides/aware_ai/AWARE_AIslides.html#overview",
-    "href": "slides/aware_ai/AWARE_AIslides.html#overview",
-    "title": "Data Analysis and Modeling in R",
-    "section": "Overview",
-    "text": "Overview\n\nModel Based Inquiries\n“Hit by a bus” workflow\n\n\noptions(scipen=999)\nlibrary(car) #recode conflict with tidyverse\nlibrary(tidyverse)\nlibrary(rio)\nlibrary(broom)\nlibrary(psych)\nlibrary(easystats)\nlibrary(sjPlot)\nlibrary(janitor)"
+    "objectID": "slides/aware_ai/ExampleMarkdown.html#be-clear",
+    "href": "slides/aware_ai/ExampleMarkdown.html#be-clear",
+    "title": "Example Markdown",
+    "section": "",
+    "text": "library(dplyr)\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\nlibrary(easystats)\n\n# Attaching packages: easystats 0.7.0 (red = needs update)\n✔ bayestestR  0.13.1   ✔ correlation 0.8.4 \n✖ datawizard  0.9.0    ✔ effectsize  0.8.6 \n✖ insight     0.19.6   ✔ modelbased  0.8.6 \n✔ performance 0.10.8   ✔ parameters  0.21.3\n✖ report      0.5.7    ✔ see         0.8.1 \n\nRestart the R-Session and update packages with `easystats::easystats_update()`.\n\nlibrary(sjPlot)\n\nInstall package \"strengejacke\" from GitHub (`devtools::install_github(\"strengejacke/strengejacke\")`) to load all sj-packages at once!\n\nlibrary(here)\n\nhere() starts at C:/Users/Dustin_Haraden/Documents/GitHub/workshops\n\nlibrary(janitor)\n\n\nAttaching package: 'janitor'\n\n\nThe following object is masked from 'package:insight':\n\n    clean_names\n\n\nThe following objects are masked from 'package:datawizard':\n\n    remove_empty, remove_empty_rows\n\n\nThe following objects are masked from 'package:stats':\n\n    chisq.test, fisher.test\n\nschool_data &lt;- read.csv(here(\"slides\", \n                             \"aware_ai\", \n                             \"data\", \n                             \"NM-NY_CAS.csv\")) %&gt;% \n  clean_names()\n\nNow that we have the data loaded in, we can begin to examine things in more detail"
   },
   {
-    "objectID": "slides/aware_ai/AWARE_AIslides.html#regression-equation",
-    "href": "slides/aware_ai/AWARE_AIslides.html#regression-equation",
-    "title": "Data Analysis and Modeling in R",
-    "section": "Regression Equation",
-    "text": "Regression Equation\nGoing from this:\n\\[\n\\hat{Y} = b_0 + b_1X1\n\\]\n\nTo this\n\\[\n\\hat{Y} = b_0 + b_1X_1 + b_2X_2 + ... + b_kX_k\n\\]\n\n\nRegression coefficient values are now “partial” - Represents the contribution to all of outcome (\\(\\hat{Y}\\)) from unique aspects of each \\(X\\)"
+    "objectID": "slides/aware_ai/ExampleMarkdown.html#correlation",
+    "href": "slides/aware_ai/ExampleMarkdown.html#correlation",
+    "title": "Example Markdown",
+    "section": "Correlation",
+    "text": "Correlation\nLet’s first look at the correlation between select variables\n\nschool_data %&gt;% \n  select(\"ageyears\", \"languages_spoken\") %&gt;% \n  tab_corr()\n\n\n\n\n \nageyears\nlanguages_spoken\n\n\nageyears\n \n-0.046\n\n\nlanguages_spoken\n-0.046\n \n\n\nComputed correlation used pearson-method with listwise-deletion."
   },
   {
-    "objectID": "slides/aware_ai/AWARE_AIslides.html#interpreting-coefficients",
-    "href": "slides/aware_ai/AWARE_AIslides.html#interpreting-coefficients",
-    "title": "Data Analysis and Modeling in R",
-    "section": "Interpreting Coefficients",
-    "text": "Interpreting Coefficients\n\\[\n\\hat{Y} = b_0 + b_1X_1 + b_2X_2 + ... + b_kX_k\n\\]\n\nFocus on a specific predictor (e.g., \\(X_1\\))\nFor every 1 unit change in \\(X_1\\), there is a \\(b_1\\) unit change in \\(Y\\), holding all other predictors constant\n\nNote: Properties of OLS still hold true\n\nThe sum of residuals will be 0\nEach predictor (\\(X\\)) will be uncorrelated with the residuals"
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Workshops & Classes",
+    "section": "",
+    "text": "Welcome!\nWelcome to the landing page for the various workshops and classes hosted by Dustin Haraden, PhD.\n\n\nWorkshops\n\n1/17/2024 - AWARE AI: Data Analysis and Modeling in R"
   },
   {
-    "objectID": "slides/aware_ai/AWARE_AIslides.html#holding-constant-wut",
-    "href": "slides/aware_ai/AWARE_AIslides.html#holding-constant-wut",
-    "title": "Data Analysis and Modeling in R",
-    "section": "Holding Constant??? Wut",
-    "text": "Holding Constant??? Wut\n\nsummary(fit1)\n\n...\n              Estimate Std. Error t value             Pr(&gt;|t|)    \n(Intercept)     39.646      2.659  14.912 &lt; 0.0000000000000002 ***\nhours_studied    3.128      0.464   6.741       0.000000000157 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n...\n\n\n\nThe average amount of sleep decreases by 0.08 hours for every 1 year older the youth his holding the number of hours playing video games and the number of hours on social media constant.\nThe average amount of sleep decreases by 0.004 hours for every 1 hour of social media use holding age and hours of video game usage constant.\n\nWhat does this mean?? Also can be called “controlling for” or “taking into account” the other variables\nLanguage comes from experimental research in which they can keep one condition unchanged while manipulating the other"
-  },
-  {
-    "objectID": "slides/aware_ai/AWARE_AIslides.html#holding-constant---controlling-for",
-    "href": "slides/aware_ai/AWARE_AIslides.html#holding-constant---controlling-for",
-    "title": "Data Analysis and Modeling in R",
-    "section": "Holding Constant - “Controlling for”",
-    "text": "Holding Constant - “Controlling for”\n\nTaken from @nickchk"
-  },
-  {
-    "objectID": "slides/aware_ai/AWARE_AIslides.html#creating-the-model",
-    "href": "slides/aware_ai/AWARE_AIslides.html#creating-the-model",
-    "title": "Data Analysis and Modeling in R",
-    "section": "Creating the Model",
-    "text": "Creating the Model\nThere can be many different ways in which we create and compare models with multiple predictors\n\n\nSimultaneous: Enter all variables in the model at once\n\nUsually the most conservative and defensible approach (unless there is theory to support a hierarchical approach)\n\nHierarchically: Building a sequence of models where a single variable is included/excluded at each step\n\nThis is hierarchical/stepwise regression. Different from HLM (Hierarchical Linear Modeling)"
-  },
-  {
-    "objectID": "slides/aware_ai/AWARE_AIslides.html#model-selection-lsr-15.10",
-    "href": "slides/aware_ai/AWARE_AIslides.html#model-selection-lsr-15.10",
-    "title": "Data Analysis and Modeling in R",
-    "section": "Model Selection (LSR 15.10)",
-    "text": "Model Selection (LSR 15.10)\nHow can we tell if one model is “better” than the other (it explains more variance in outcome)?\n\nEach predictor (or set of predictors) is investigated as to what it adds to the model when it is entered\nThe order of the variables depends on an a priori hypothesis\n\nThe concept is to ask how much variance is unexplained by our model. The leftovers can be compared to an alternate model to see if the new variable adds anything or if we should focus on parsimony"
-  },
-  {
-    "objectID": "slides/aware_ai/AWARE_AIslides.html#checking-the-model-lsr-15.9",
-    "href": "slides/aware_ai/AWARE_AIslides.html#checking-the-model-lsr-15.9",
-    "title": "Data Analysis and Modeling in R",
-    "section": "Checking the model (LSR 15.9)",
-    "text": "Checking the model (LSR 15.9)\nWhenever we are looking at the regression model diagnostics, we are often considering the residual values. The types of residuals we can look at are:\n\n\nOrdinary Residuals - Raw\nStandardized Residuals\nStudentized Residuals - Takes into account what the SD would have been with the removal of the \\(i\\)th observation"
-  },
-  {
-    "objectID": "slides/aware_ai/AWARE_AIslides.html#checking-collinearity",
-    "href": "slides/aware_ai/AWARE_AIslides.html#checking-collinearity",
-    "title": "Data Analysis and Modeling in R",
-    "section": "Checking Collinearity",
-    "text": "Checking Collinearity\nWe need to check to see if our predictor variables are too highly correlated with each other\nTo do so we use variance inflation factors (VIF)\n\nThere will be a VIF that is associated with each predictor in the model\nInterpreting VIF (link) - Starts at 1 and goes up\n\n1 = Not Correlated\n1-5 = Moderately Correlated\n5+ = Highly Correlated\n\n\n\n#car::vif(m.3)"
-  },
-  {
-    "objectID": "slides/aware_ai/AWARE_AIslides.html#easystats-making-stats-easy",
-    "href": "slides/aware_ai/AWARE_AIslides.html#easystats-making-stats-easy",
-    "title": "Data Analysis and Modeling in R",
-    "section": "easystats making stats easy",
-    "text": "easystats making stats easy\nCan check the model with a simple function\n\n#check_model(m.3)"
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About the Presenter\nHello!\nMy name is Dustin Haraden and I am an Assistant Professor of Psychology at Rochester Institute of Technology. The focus of my research is examining chronotype/circadian rhythms and sleep processes as risk factors for youth depression and anxiety. I also aim to further examine the impact of measurement upon the conclusions that can be made throughout psychological science.\nI am also an advocate for open science practices and engaging in transparency throughout the research process.\nPlease reach out with any additional questions (send me an email)."
   },
   {
     "objectID": "AIWorkshop.html",
@@ -91,18 +49,18 @@
     "text": "Slides for Presentation"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About the Presenter\nHello!\nMy name is Dustin Haraden and I am an Assistant Professor of Psychology at Rochester Institute of Technology. The focus of my research is examining chronotype/circadian rhythms and sleep processes as risk factors for youth depression and anxiety. I also aim to further examine the impact of measurement upon the conclusions that can be made throughout psychological science.\nI am also an advocate for open science practices and engaging in transparency throughout the research process.\nPlease reach out with any additional questions (send me an email)."
+    "objectID": "slides/aware_ai/AWARE_AIslides.html#about-me",
+    "href": "slides/aware_ai/AWARE_AIslides.html#about-me",
+    "title": "Data Analysis and Modeling in R",
+    "section": "About Me",
+    "text": "About Me\n\nDustin Haraden, PhD\nClinical/Community Psychology\nResearch Focus: Developmental Psychopathology\n\n\nExamining Risk factors for depression and anxiety in children and adolescents\nEmphasis on circadian rhythms and sleep processes as well as pubertal development\nInvestigating methodology as it impacts conclusions that can be made\nQuantitatively Oriented\n\n\nWant to expand into integrating AI and LLM’s into clinical practice to increase efficacy of treatment and adherence to evidence based practices (e.g., clear case conceptualization and treatment planning)"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Workshops & Classes",
-    "section": "",
-    "text": "Welcome!\nWelcome to the landing page for the various workshops and classes hosted by Dustin Haraden, PhD.\n\n\nWorkshops\n\n1/17/2024 - AWARE AI: Data Analysis and Modeling in R"
+    "objectID": "slides/aware_ai/AWARE_AIslides.html#overview",
+    "href": "slides/aware_ai/AWARE_AIslides.html#overview",
+    "title": "Data Analysis and Modeling in R",
+    "section": "Overview",
+    "text": "Overview\n\nModel Based Inquiries\n“Hit by a bus” workflow\n\n\noptions(scipen=999)\nlibrary(car) #recode conflict with tidyverse\nlibrary(tidyverse)\nlibrary(rio)\nlibrary(broom)\nlibrary(psych)\nlibrary(easystats)\nlibrary(sjPlot)\nlibrary(janitor)"
   },
   {
     "objectID": "slides/aware_ai/AWARE_AIslides.html#endogeneity",
@@ -116,6 +74,62 @@
     "href": "slides/aware_ai/AWARE_AIslides.html#endogeneity---model-impact",
     "title": "Data Analysis and Modeling in R",
     "section": "Endogeneity - Model Impact",
-    "text": "Endogeneity - Model Impact\nEndogeneity can impact a model in a number of ways including:\n\nBias in parameter estimates\nInflation of standard errors\nSpurious results\nSensitivity to model changes\n\n\nExample - Single Predictor\n\nfit1 &lt;- lm(performance_index ~ hours_studied, \n           data = student_perf)"
+    "text": "Endogeneity - Model Impact\nEndogeneity can impact a model in a number of ways including:\n\nBias in parameter estimates\nInflation of standard errors\nSpurious results\nSensitivity to model changes"
+  },
+  {
+    "objectID": "slides/aware_ai/AWARE_AIslides.html#omitted-variables",
+    "href": "slides/aware_ai/AWARE_AIslides.html#omitted-variables",
+    "title": "Data Analysis and Modeling in R",
+    "section": "Omitted Variables",
+    "text": "Omitted Variables\nIs it possible to have all variables included in a model?\nWe know that omitted variables will result in biased parameters\nWe are also able to potentially detect when there may be omitted variables (e.g., modification indices, residual analyses, specification tests)\nHowever, it is important to be guided by a theoretical framework. This is an important foundation in model building."
+  },
+  {
+    "objectID": "slides/aware_ai/AWARE_AIslides.html#alternate-vs.-equivalent-models",
+    "href": "slides/aware_ai/AWARE_AIslides.html#alternate-vs.-equivalent-models",
+    "title": "Data Analysis and Modeling in R",
+    "section": "Alternate vs. Equivalent Models",
+    "text": "Alternate vs. Equivalent Models\nAlternate models can be tested and compared to one another based on their model fit\nWhen alternate models are created, they are likely to have differences in model fit\nEquivalent Models on the other hand have different representations of the structure of the model but have identical model fit"
+  },
+  {
+    "objectID": "slides/aware_ai/AWARE_AIslides.html#equivalent-models---example",
+    "href": "slides/aware_ai/AWARE_AIslides.html#equivalent-models---example",
+    "title": "Data Analysis and Modeling in R",
+    "section": "Equivalent Models - Example",
+    "text": "Equivalent Models - Example\nModel 1:\n\n\n\n\n\n\nModel 2:\n\n\n\n\n\n\n\nModel 3:"
+  },
+  {
+    "objectID": "slides/aware_ai/AWARE_AIslides.html#equivalent-models---example-1",
+    "href": "slides/aware_ai/AWARE_AIslides.html#equivalent-models---example-1",
+    "title": "Data Analysis and Modeling in R",
+    "section": "Equivalent Models - Example",
+    "text": "Equivalent Models - Example\nAll three models shown previously are numerically equivalent despite making three clearly different claims about the reality that they represent\nIt is important to then go back to theory to identify which is the most useful (or least wrong going back to the quote)\nNote: This example only includes three measured variables. The number of equivalent models will increase as the complexity of the model increases (For further reading, see Lee & Hershberger (1990). A simple rule for generating equivalent models in covariance structure modeling. Multivariate Behavioral Research, 25, 313-334.)"
+  },
+  {
+    "objectID": "slides/aware_ai/AWARE_AIslides.html#workflow-framework",
+    "href": "slides/aware_ai/AWARE_AIslides.html#workflow-framework",
+    "title": "Data Analysis and Modeling in R",
+    "section": "Workflow Framework",
+    "text": "Workflow Framework\nAnyone should be able to run your analyses at any point\nWhen working with R/R-Studio, there are some things that can be very helpful to consider:\n\nUsing a “Project”\nIncorporating relative file paths\nImplement RMarkdown as frequently as possible\n\nThe following slides will have additional resources, but now we will transition to a demo of the workflow. I will work to move back and forth between these slides and the demo\nThe majority of this can be found in rstats.wtf"
+  },
+  {
+    "objectID": "slides/aware_ai/AWARE_AIslides.html#example---regression",
+    "href": "slides/aware_ai/AWARE_AIslides.html#example---regression",
+    "title": "Data Analysis and Modeling in R",
+    "section": "Example - Regression",
+    "text": "Example - Regression\n\nstudent_perf &lt;- read_csv(\"https://raw.githubusercontent.com/dharaden/psyc640/main/data/Multiple_reg/Student_Performance.csv\") %&gt;%    \n  clean_names()"
+  },
+  {
+    "objectID": "slides/aware_ai/AWARE_AIslides.html#model-diagnostics",
+    "href": "slides/aware_ai/AWARE_AIslides.html#model-diagnostics",
+    "title": "Data Analysis and Modeling in R",
+    "section": "Model Diagnostics",
+    "text": "Model Diagnostics\neasystats making stats easy\nCan check the model with a simple function\n\ncheck_model(m.3)"
+  },
+  {
+    "objectID": "slides/aware_ai/AWARE_AIslides.html#some-useful-resources-for-rmarkdown",
+    "href": "slides/aware_ai/AWARE_AIslides.html#some-useful-resources-for-rmarkdown",
+    "title": "Data Analysis and Modeling in R",
+    "section": "Some Useful Resources for RMarkdown",
+    "text": "Some Useful Resources for RMarkdown\nR Markdown: The Definitive Guide\nR Markdown Cheatsheet\nR Markdown Cookbook\nCustom Formats for R Markdown"
   }
 ]

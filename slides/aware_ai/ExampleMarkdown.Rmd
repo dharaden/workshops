@@ -1,0 +1,38 @@
+---
+title: "Example Markdown"
+author: "Dustin Haraden"
+date: "2024-01-17"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Be Clear
+
+```{r}
+library(dplyr)
+library(easystats)
+library(sjPlot)
+library(here)
+library(janitor)
+
+school_data <- read.csv(here("slides", 
+                             "aware_ai", 
+                             "data", 
+                             "NM-NY_CAS.csv")) %>% 
+  clean_names()
+```
+
+Now that we have the data loaded in, we can begin to examine things in more detail
+
+## Correlation
+
+Let's first look at the correlation between select variables
+
+```{r}
+school_data %>% 
+  select("ageyears", "languages_spoken") %>% 
+  tab_corr()
+```
